@@ -2,12 +2,14 @@ import type { Request } from "express";
 
 export type AuthUser = {
   id: string;
-  role?: string; // "USER" | "ADMIN" etc
+  role?: "USER" | "ADMIN";
+  email?: string;
 };
 
 export type AuthVendor = {
   id: string;
-  role?: string;
+  role?: "VENDOR" | "ADMIN";
+  email?: string;
 };
 
 export interface AuthenticatedRequest extends Request {
@@ -16,5 +18,5 @@ export interface AuthenticatedRequest extends Request {
 
 export interface VendorAuthenticatedRequest extends Request {
   vendor?: AuthVendor;
-  file?: Express.Multer.File; // <-- enables req.file typing
+  file?: Express.Multer.File;
 }
